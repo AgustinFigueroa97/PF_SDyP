@@ -10,7 +10,7 @@
 
 
 
-#define N 1000
+#define N 800
 
 //#define CLOCKS_PER_SEC 1000
 
