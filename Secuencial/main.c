@@ -10,7 +10,7 @@
 
 
 
-#define N 1500
+#define N 2000
 
 //#define CLOCKS_PER_SEC 1000
 
@@ -18,7 +18,7 @@
 
 
 
-int I = 1000; // Esto es para el numero de iteraciones
+int I = 1200; // Esto es para el numero de iteraciones
 
 
 
