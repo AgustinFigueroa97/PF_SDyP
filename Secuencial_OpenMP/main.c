@@ -4,11 +4,11 @@
 #include <sys/time.h>
 #include <string.h>
 
-#define N 300
+#define N 1500
 //#define CLOCKS_PER_SEC 1000
 #define EJECUCIONES 5
 
-int I = 240; // Esto es para el numero de iteraciones
+int I = 1200; // Esto es para el numero de iteraciones
 
 /*Dejo una matriz de 3x3 para pruebas unicamente, en el clauster se probara el programa con las correspondientes dimensiones*/
 
