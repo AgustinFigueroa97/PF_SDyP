@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <string.h>
 
-#define N 1500
+#define N 1000
 //#define CLOCKS_PER_SEC 1000
 #define EJECUCIONES 5
 
