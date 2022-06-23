@@ -8,9 +8,8 @@
 
 //#define CLOCKS_PER_SEC 1000
 #define EJECUCIONES 5
-#define SEMANAS 240 // Esto es para el numero de iteraciones
-
-int n = 1500; // Por este parametro me indicaran la dimension de la matriz
+#define SEMANAS 1200 // Esto es para el numero de iteraciones
+int n = 800; // Por este parametro me indicaran la dimension de la matriz
 
 /*Dejo una matriz de 3x3 para pruebas unicamente, en el clauster se probara el programa con las correspondientes dimensiones*/
 
@@ -564,3 +563,4 @@ int main(int argc, char **argv) {
     MPI_Finalize();
 
 }
+
