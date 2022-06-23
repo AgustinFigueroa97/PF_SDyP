@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <string.h>
 
-#define N 2000
+#define N 800
 //#define CLOCKS_PER_SEC 1000
 #define EJECUCIONES 5
 
@@ -75,9 +75,9 @@ void inicializar(celda **matriz){
     int i;
     int j;  
 
-    #pragma omp parallel for shared(matriz) private(i,c) num_threads(1) 
+    #pragma omp parallel for shared(matriz) schedule(dynamic) private(i,j,c) num_threads(16) 
     for (i = 0; i < N; i++) {
-        #pragma omp parallel for shared(matriz) private(j,c) num_threads(1)
+        //#pragma omp parallel for shared(matriz) private(j,c) num_threads(1)
         for (j = 0; j < N; j++) {
             c.edad = 0;
             
