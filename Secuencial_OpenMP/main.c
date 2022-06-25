@@ -3,6 +3,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <string.h>
+#include <math.h>
 
 #define N 800
 //#define CLOCKS_PER_SEC 1000
@@ -252,13 +253,17 @@ void functionPrincipal(celda ***matriz,celda ***matriz_resultado,int iteraciones
     celda aux;
     int i; 
     int j; 
+    int div1; 
+    int div2; 
+    div1 = floor(N/3);
+    div2 = floor(N/4); 
 
     while (contador != iteraciones) {
         //printf("Numero de iteracion:%d\n", contador);
         //printf("\n");
-    	#pragma omp parallel for schedule(dynamic,260) private(i) num_threads(2)
+    	#pragma omp parallel for schedule(dynamic,div1) private(i) num_threads(2)
         for (i = 0; i < N; i++) {
-        	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,200) private(j,aux) num_threads(8)
+        	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(2)
             for (j = 0; j < N; j++) {
                 aux.estado = (*matriz)[i][j].estado;
                 aux.t_edad = (*matriz)[i][j].t_edad;
