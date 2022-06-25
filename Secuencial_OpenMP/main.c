@@ -75,12 +75,11 @@ void inicializar(celda **matriz){
     int i;
     int j;  
 
-    #pragma omp parallel for shared(matriz) schedule(dynamic) private(i,j,c) num_threads(16) 
+    //#pragma omp parallel for shared(matriz) schedule(dynamic) private(i,j,c) num_threads(16) 
     for (i = 0; i < N; i++) {
         //#pragma omp parallel for shared(matriz) private(j,c) num_threads(1)
         for (j = 0; j < N; j++) {
             c.edad = 0;
-            
             //Vamos a tirar random para el estado
             estado = funcionRandomIntervalo(rand(),0,100);
             if(estado <=0.65){
@@ -250,14 +249,17 @@ void functionPrincipal(celda ***matriz,celda ***matriz_resultado,int iteraciones
     float random;
     int semana_12=0;
     celda **puntero;
+    celda aux;
+    int i; 
+    int j; 
 
     while (contador != iteraciones) {
         //printf("Numero de iteracion:%d\n", contador);
         //printf("\n");
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                celda aux;
+    	#pragma omp parallel for schedule(dynamic,260) private(i) num_threads(2)
+        for (i = 0; i < N; i++) {
+        	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,200) private(j,aux) num_threads(8)
+            for (j = 0; j < N; j++) {
                 aux.estado = (*matriz)[i][j].estado;
                 aux.t_edad = (*matriz)[i][j].t_edad;
                 aux.edad = (*matriz)[i][j].edad;
