@@ -345,11 +345,11 @@ void functionPrincipal(celda ***matriz,celda ***matriz_resultado,int desde, int 
     celda aux;
     int div1,div2; 
     div1 = floor(n/3);
-    div2 = floor(n/2); 
+    div2 = floor(n/8); 
 
     #pragma omp parallel for schedule(dynamic,div1) private(i) num_threads(2)
     for (int i = desde; i < hasta; i++) {
-	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(2)
+	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(8)
         for (int j = 0; j < n; j++) {
 		
              	celda aux;
