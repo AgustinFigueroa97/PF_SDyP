@@ -256,14 +256,14 @@ void functionPrincipal(celda ***matriz,celda ***matriz_resultado,int iteraciones
     int div1; 
     int div2; 
     div1 = floor(N/3);
-    div2 = floor(N/4); 
+    div2 = floor(N/8); 
 
     while (contador != iteraciones) {
         //printf("Numero de iteracion:%d\n", contador);
         //printf("\n");
     	#pragma omp parallel for schedule(dynamic,div1) private(i) num_threads(2)
         for (i = 0; i < N; i++) {
-        	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(2)
+        	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(8)
             for (j = 0; j < N; j++) {
                 aux.estado = (*matriz)[i][j].estado;
                 aux.t_edad = (*matriz)[i][j].t_edad;
