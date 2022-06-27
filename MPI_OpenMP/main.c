@@ -10,7 +10,7 @@
 #define EJECUCIONES 5
 #define SEMANAS 1200 // Esto es para el numero de iteraciones
 
-int n = 2000; // Por este parametro me indicaran la dimension de la matriz
+int n = 800; // Por este parametro me indicaran la dimension de la matriz
 
 /*Dejo una matriz de 3x3 para pruebas unicamente, en el clauster se probara el programa con las correspondientes dimensiones*/
 
@@ -345,11 +345,11 @@ void functionPrincipal(celda ***matriz,celda ***matriz_resultado,int desde, int 
     celda aux;
     int div1,div2; 
     div1 = floor(n/3);
-    div2 = floor(n/2); 
+    div2 = floor(n/4); 
 
     #pragma omp parallel for schedule(dynamic,div1) private(i) num_threads(2)
     for (int i = desde; i < hasta; i++) {
-	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(2)
+	#pragma omp parallel for shared(matriz,matriz_resultado) schedule(dynamic,div2) private(j,aux) num_threads(4)
         for (int j = 0; j < n; j++) {
 		
              	celda aux;
