@@ -5,7 +5,7 @@
 #include <string.h>
 #include <math.h>
 
-#define N 800
+#define N 2000
 //#define CLOCKS_PER_SEC 1000
 #define EJECUCIONES 5
 
